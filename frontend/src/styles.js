@@ -9,6 +9,7 @@ const useStyles = makeStyles(()=> ({
 
     table: {
         minWidth: '650px',
+        maxWidth: '100vw',
     },
 
     tableContainer: {
@@ -30,8 +31,14 @@ const useStyles = makeStyles(()=> ({
       },
 
     homeButton: {
-        marginRight: '100px !important'
+        position: 'relative',
+        marginRight: '200px !important'
       },
+    
+    addBookContainer: {
+        justifyContent: 'center',
+        marginTop: '70px'
+    }
 }))
 
  export default useStyles;

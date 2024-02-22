@@ -10,7 +10,7 @@ import useStyles from '../styles';
 import AddIcon from '@mui/icons-material/Add';
 
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Fab } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Fab, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function createData(id, title, author, pub_year) {
@@ -28,6 +28,7 @@ const rows = [
 const Home = () => {
   const classes = useStyles();
   return (
+    
     <div className={classes.container}>
     <div className={classes.Fabs}>
     <Link to="/addBook">
@@ -36,6 +37,7 @@ const Home = () => {
     </Fab>
     </Link>
     </div>
+    <Grid container xl={12}>
     <TableContainer component={Paper} className={classes.tableContainer} style={{ overflowX: 'auto' }}>
       <Table className={classes.table} size="medium">
         <TableHead>
@@ -58,7 +60,9 @@ const Home = () => {
         </TableBody>
       </Table>
     </TableContainer>
+    </Grid>
     </div>
+    
   );
 };
 
