@@ -10,7 +10,7 @@ import useStyles from '../styles';
 import AddIcon from '@mui/icons-material/Add';
 
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Fab, Grid } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Fab, Grid, Button } from '@mui/material'; 
 import { Link } from 'react-router-dom';
 
 function createData(id, title, author, pub_year) {
@@ -31,7 +31,7 @@ const Home = () => {
     
     <div className={classes.container}>
     <div className={classes.Fabs}>
-    <Link to="/addBook">
+    <Link to="/addbook">
     <Fab color='secondary' aria-label="add" className={classes.addIcon}>
         <AddIcon />
     </Fab>
@@ -46,6 +46,7 @@ const Home = () => {
             <TableCell align="center">Title</TableCell>
             <TableCell align="center">Author</TableCell>
             <TableCell align="center">Published Year</TableCell>
+            <TableCell align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +56,10 @@ const Home = () => {
               <TableCell align="center">{row.title}</TableCell>
               <TableCell align="center">{row.author}</TableCell>
               <TableCell align="center">{row.pub_year}</TableCell>
+              <TableCell align='center'>
+                <Link to={"/viewbook"}><Button variant='contained' color="success" className={classes.smallButton}>View</Button></Link>
+                <Link to={"/editbook"}><Button variant='contained' sx={{marginLeft:"10px"}} className={classes.smallButton}>Edit</Button></Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
