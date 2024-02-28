@@ -14,8 +14,8 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home/>}/>
       <Route exact path="/addbook" element={<AddBook/>}/>
-      <Route exact path="/editbook" element={<EditBook/>}/>
-      <Route exact path="/viewbook" element={<ViewBook/>}/>
+      <Route exact path="/editbook/:id" element={<EditBook/>}/>
+      <Route exact path="/viewbook/:id" element={<ViewBook/>}/>
     </Routes>
     
   </Router>

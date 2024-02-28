@@ -20,17 +20,23 @@ const EditBook = () => {
   const{title,author,pub_year,description}=book;
 
   useEffect(() => {
-    const loadBook = async () => {
-      try {
-        const result = await axios.get(`http://localhost:5005/api/books/${id}`);
-        setBook(result.data);
-      } catch (error) {
-        console.error("Error loading book:", error);
-      }
-    };
-
+    console.log(id);
     loadBook();
-  }, [id]); 
+  }); 
+
+  const loadBook = async () => {
+    if (!id) {
+      console.error("No book ID provided");
+      return; 
+    }
+    try {
+      const result = await axios.get(`http://localhost:5005/api/books/${id}`);
+      setBook(result.data);
+      console.log(result.data);
+    } catch (error) {
+      console.error("Error loading book:", error);
+    }
+  };
 
   const onInputChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });

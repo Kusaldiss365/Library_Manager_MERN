@@ -10,29 +10,32 @@ const ViewBook = () => {
 
   const navigate = useNavigate();
 
-  const [book,setBook] = useState({
-    title:"",
-    author:"",
-    pub_year:"",
-    description:""
-  })
+  const [book,setBook] = useState([])
   
   const{id} = useParams();
+console.log("ID from params:", id);
+
+
 
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-
-  const loadBook = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5005/api/books/${id}`);
-      setBook(response.data);
-    } catch (error) {
-      console.error("Error fetching book:", error);
-    }
-  };
 
   useEffect(()=>{
     loadBook();
 })
+
+  const loadBook = async () => {
+    try {
+      if (!id) {
+        console.error("No book ID provided");
+        return; 
+      }
+      const response = await axios.get(`http://localhost:5005/api/books/${id}`);
+      setBook(response.data);
+      console.log(response);
+    } catch (error) {
+      console.error("Error fetching book:", error);
+    }
+  };
 
   const handleDeleteBook = () => {
     setDeleteDialogOpen(true);

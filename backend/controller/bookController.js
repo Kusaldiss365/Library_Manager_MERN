@@ -38,6 +38,7 @@ const getBook = asyncHandler(async(req, res)=>{
     }
 
     res.status(200).json(book);
+    return(book);
 })
 
 //Update book
@@ -54,6 +55,7 @@ const updateBook = asyncHandler(async(req,res)=>{
         {new: true}
     )
     res.status(200).json(updatedBook);
+    return(updatedBook);
 });
 
 //Delete Book
