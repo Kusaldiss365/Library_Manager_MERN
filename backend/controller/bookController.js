@@ -7,6 +7,7 @@ const Book = require('../models/bookModel');
 const getBooks = asyncHandler(async(req, res) =>{
     const books = await Book.find()
     res.status(200).json(books);
+    return books;
 });
 
 //Create book
@@ -66,7 +67,7 @@ const deleteBook = asyncHandler(async(req, res)=>{
         throw new Error("Book not Found!");
     }
 
-    await Book.deleteOne();
+    await Book.deleteOne({ _id: req.params.id });
     res.status(200).json(book);
 });
 

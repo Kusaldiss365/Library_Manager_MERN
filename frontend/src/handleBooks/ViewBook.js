@@ -21,7 +21,7 @@ console.log("ID from params:", id);
 
   useEffect(()=>{
     loadBook();
-})
+},[])
 
   const loadBook = async () => {
     try {
@@ -45,7 +45,7 @@ console.log("ID from params:", id);
     setDeleteDialogOpen(false);
   };
 
-  const handleConfirmDelete = async(id) => {
+  const handleConfirmDelete = async() => {
       await axios.delete(`http://localhost:5005/api/books/${id}`)
       .catch((error)=>{
           console.log(error);
@@ -91,7 +91,7 @@ console.log("ID from params:", id);
       </Paper>
       <Dialog open={deleteDialogOpen} onClose={handleCloseDialog}>
         <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to delete this book?"}
+          {"Are you sure you want to delete this book??"}
         </DialogTitle>
         <DialogActions>
           <Button onClick={handleCloseDialog}>No</Button>

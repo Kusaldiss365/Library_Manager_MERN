@@ -22,7 +22,7 @@ const EditBook = () => {
   useEffect(() => {
     console.log(id);
     loadBook();
-  }); 
+  },[]); 
 
   const loadBook = async () => {
     if (!id) {

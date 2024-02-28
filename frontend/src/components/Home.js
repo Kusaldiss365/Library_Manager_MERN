@@ -29,7 +29,7 @@ const Home = () => {
 
 useEffect(()=>{
   loadBooks();
-})
+},[])
 
 const searchBook = (event) =>{
   setSearch(books.filter(f => f.title.toLowerCase().includes(event.target.value)));
@@ -73,8 +73,8 @@ const loadBooks = async() =>{
               <TableCell align="center">{book.author}</TableCell>
               <TableCell align="center">{book.pub_year}</TableCell>
               <TableCell align='center'>
-                <Link to={`/viewbook/${book.id}`}><Button variant='contained' color="success" className={classes.smallButton}>View</Button></Link>
-                <Link to={`/editbook/${book.id}`}><Button variant='contained' sx={{marginLeft:"10px"}} className={classes.smallButton}>Edit</Button></Link>
+                <Link to={`/viewbook/${book._id}`}><Button variant='contained' color="success" className={classes.smallButton}>View</Button></Link>
+                <Link to={`/editbook/${book._id}`}><Button variant='contained' sx={{marginLeft:"10px"}} className={classes.smallButton}>Edit</Button></Link>
               </TableCell>
             </TableRow>
           ))}
