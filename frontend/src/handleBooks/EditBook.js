@@ -30,7 +30,7 @@ const EditBook = () => {
     };
 
     loadBook();
-  }, [id]); // Make sure to include id in the dependency array
+  }, [id]); 
 
   const onInputChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
