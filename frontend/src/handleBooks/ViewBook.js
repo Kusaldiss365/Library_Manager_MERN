@@ -1,15 +1,38 @@
 import { 
   Box, Card, CardContent, Typography, Button, DialogTitle, Dialog, DialogActions, Paper,
 } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useStyles from '../styles'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const ViewBook = () => {
 
   const navigate = useNavigate();
 
+  const [book,setBook] = useState({
+    title:"",
+    author:"",
+    pub_year:"",
+    description:""
+  })
+  
+  const{id} = useParams();
+
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  const loadBook = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5005/api/books/${id}`);
+      setBook(response.data);
+    } catch (error) {
+      console.error("Error fetching book:", error);
+    }
+  };
+
+  useEffect(()=>{
+    loadBook();
+})
 
   const handleDeleteBook = () => {
     setDeleteDialogOpen(true);
@@ -19,38 +42,41 @@ const ViewBook = () => {
     setDeleteDialogOpen(false);
   };
 
-  const handleConfirmDelete = () => {
-    // Delete logic here
-    navigate("/");
+  const handleConfirmDelete = async(id) => {
+      await axios.delete(`http://localhost:5005/api/books/${id}`)
+      .catch((error)=>{
+          console.log(error);
+      })
+      navigate("/");
   };
 
   const classes = useStyles();
 
   return (
     
-    <Box container mt="50px" className={classes.viewBookBox}>
-      <Paper elevation="3">
+    <Box container="true" mt="50px" className={classes.viewBookBox}>
+      <Paper elevation={3}>
       <Card sx={{minWidth:"400px", maxWidth:"700px", minHeight:"500px"}} align="center">
         <CardContent>
           <Typography variant='h3' component="div" sx={{fontWeight:'Bold'}} mt="15px" gutterBottom>
-            Book Title
+            {book.title}
           </Typography>
           <Box mt="50px">
             <label htmlFor="author">Author: </label>
             <Typography variant='h6' gutterBottom>
-              Book Author
+            {book.author}
             </Typography>
           </Box>
           <Box mt="35px">
             <label htmlFor="author">Published Year: </label>
             <Typography variant='h6' gutterBottom>
-              Published Year
+            {book.pub_year}
             </Typography>
           </Box>
           <Box mt="35px">
             <label htmlFor="description">Description: </label>
             <Typography variant='h6' gutterBottom >
-              Description
+            {book.description}
             </Typography>
           </Box>
           <Box mt="60px" justifyContent="space-between" display="flex">

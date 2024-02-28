@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div>
     <CssBaseline/>
-      <AppBar position='relative'>
+      <AppBar position='static'>
         <Toolbar className={classes.toolBar}>
           <Link to={"/"}><Button variant='contained' className={classes.homeButton} sx={{ color: 'white', backgroundColor: 'green' }}><HomeIcon/></Button></Link>
           <ContactsIcon  position="absolute" className={classes.icon}/>

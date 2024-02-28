@@ -4,7 +4,7 @@ const useStyles = makeStyles(()=> ({
 
     icon: {
         marginRight: '20px',
-        marginLeft: '200px',
+        marginLeft: '250px',
         fontSize: '3rem !important'
     },
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(()=> ({
     },
 
     tableContainer: {
-        margin: '100px 40px',
+        margin: '50px 40px',
     },
     container: {
         padding: '20px',
@@ -62,6 +62,14 @@ const useStyles = makeStyles(()=> ({
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '70vh', // Optional: to center vertically as well
+    },
+    searchBox: {
+        // minWidth: '650px',
+        margin: '10px',
+        padding: '20px',
+        justifyContent: 'center',
+        display: 'flex',
+        alignItems: 'center'
     }
 }))
 
